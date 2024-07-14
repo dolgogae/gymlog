@@ -1,5 +1,7 @@
 package com.gymory.global.config;
 
+import com.gymory.global.error.ErrorCode;
+import com.gymory.global.error.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -42,7 +44,7 @@ public class AES128Config {
             byte[] encryted = cipher.doFinal(plaintext.getBytes(ENCODING_TYPE));
             return new String(Base64.getEncoder().encode(encryted), ENCODING_TYPE);
         } catch (Exception e) {
-            throw new com.wo.BusinessException(com.wo.ErrorCode.ENCRYPTION_FAILED);
+            throw new BusinessException(ErrorCode.ENCRYPTION_FAILED);
         }
     }
 
@@ -53,7 +55,7 @@ public class AES128Config {
             byte[] decoded = Base64.getDecoder().decode(plaintext.getBytes(ENCODING_TYPE));
             return new String(cipher.doFinal(decoded), ENCODING_TYPE);
         } catch (Exception e) {
-            throw new com.wo.BusinessException(com.wo.ErrorCode.DECRYPTION_FAILED);
+            throw new BusinessException(ErrorCode.DECRYPTION_FAILED);
         }
     }
 }

@@ -1,12 +1,12 @@
 package com.gymory.global.security;
 
+import com.gymory.domain.user.service.UserService;
 import com.gymory.global.redis.RedisUtils;
 import com.gymory.global.security.handler.CustomAccessDeniedHandler;
 import com.gymory.global.security.handler.LoginFailureHandler;
 import com.gymory.global.security.handler.LoginSuccessHandler;
 import com.gymory.global.security.jwt.JwtTokenProvider;
 import com.gymory.global.security.jwt.JwtVerificationFilter;
-import com.gymory.domain.user.service.UserService;
 import com.gymory.global.filter.JwtAuthenticationFilter;
 import com.gymory.global.config.AES128Config;
 import lombok.RequiredArgsConstructor;

@@ -12,10 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableCaching
 @EnableJpaAuditing
 @SpringBootApplication//(exclude={SecurityAutoConfiguration.class})
-public class SpringSecApplication {
+public class GymoryApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringSecApplication.class, args);
+        SpringApplication.run(GymoryApplication.class, args);
     }
 
     @Bean
