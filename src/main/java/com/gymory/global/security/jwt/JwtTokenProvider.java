@@ -4,9 +4,9 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
-import com.gymory.global.error.ErrorCode;
-import com.gymory.global.error.ErrorResponse;
-import com.gymory.global.error.exception.BusinessException;
+import com.gymory.global.code.error.ErrorCode;
+import com.gymory.global.code.error.ErrorResponse;
+import com.gymory.global.code.error.exception.BusinessException;
 import com.gymory.global.security.CustomUserDetails;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -115,6 +115,28 @@ public class JwtTokenProvider {
 
     // 토큰 검증
     public boolean validateToken(String token, HttpServletResponse response) {
+        try {
+            parseClaims(token);
+        } catch (MalformedJwtException e) {
+            log.info("Invalid JWT token");
+            log.trace("Invalid JWT token trace = {}", e);
+        } catch (ExpiredJwtException e) {
+            log.info("Expired JWT token");
+            log.trace("Expired JWT token trace = {}", e);
+            ErrorResponse.of(ErrorCode.TOKEN_EXPIRED);
+        } catch (UnsupportedJwtException e) {
+            log.info("Unsupported JWT token");
+            log.trace("Unsupported JWT token trace = {}", e);
+            ErrorResponse.of(ErrorCode.TOKEN_UNSUPPORTED);
+        } catch (IllegalArgumentException e) {
+            log.info("JWT claims string is empty.");
+            log.trace("JWT claims string is empty trace = {}", e);
+            ErrorResponse.of(ErrorCode.TOKEN_ILLEGAL_ARGUMENT);
+        }
+        return true;
+    }
+
+    public boolean validateToken(String token) {
         try {
             parseClaims(token);
         } catch (MalformedJwtException e) {

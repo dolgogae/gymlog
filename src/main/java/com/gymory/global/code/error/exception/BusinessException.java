@@ -1,7 +1,7 @@
-package com.gymory.global.error.exception;
+package com.gymory.global.code.error.exception;
 
-import com.gymory.global.error.ErrorCode;
-import com.gymory.global.error.ErrorResponse;
+import com.gymory.global.code.error.ErrorCode;
+import com.gymory.global.code.error.ErrorResponse;
 import lombok.Getter;
 
 import java.util.ArrayList;

@@ -7,7 +7,7 @@ import com.gymory.global.security.handler.LoginFailureHandler;
 import com.gymory.global.security.handler.LoginSuccessHandler;
 import com.gymory.global.security.jwt.JwtTokenProvider;
 import com.gymory.global.security.jwt.JwtVerificationFilter;
-import com.gymory.global.filter.JwtAuthenticationFilter;
+import com.gymory.global.security.jwt.JwtAuthenticationFilter;
 import com.gymory.global.config.AES128Config;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -2,8 +2,8 @@ package com.gymory.global.security;
 
 import com.gymory.domain.user.data.UserEntity;
 import com.gymory.domain.user.repository.UserJpaRepository;
-import com.gymory.global.error.ErrorCode;
-import com.gymory.global.error.exception.BusinessException;
+import com.gymory.global.code.error.ErrorCode;
+import com.gymory.global.code.error.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

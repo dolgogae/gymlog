@@ -1,4 +1,4 @@
-package com.gymory.global.error;
+package com.gymory.global.code.error;
 
 import lombok.AccessLevel;
 import lombok.Getter;

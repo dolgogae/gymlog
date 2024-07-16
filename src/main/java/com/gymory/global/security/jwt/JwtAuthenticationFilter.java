@@ -1,4 +1,4 @@
-package com.gymory.global.filter;
+package com.gymory.global.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gymory.domain.user.dto.UserDto;

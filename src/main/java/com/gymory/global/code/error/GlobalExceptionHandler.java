@@ -1,6 +1,6 @@
-package com.gymory.global.error;
+package com.gymory.global.code.error;
 
-import com.gymory.global.error.exception.BusinessException;
+import com.gymory.global.code.error.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import static com.gymory.global.error.ErrorCode.*;
+import static com.gymory.global.code.error.ErrorCode.*;
 
 @Slf4j
 @RestControllerAdvice

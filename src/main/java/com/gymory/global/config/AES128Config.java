@@ -1,7 +1,7 @@
 package com.gymory.global.config;
 
-import com.gymory.global.error.ErrorCode;
-import com.gymory.global.error.exception.BusinessException;
+import com.gymory.global.code.error.ErrorCode;
+import com.gymory.global.code.error.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

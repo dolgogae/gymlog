@@ -1,4 +1,4 @@
-package com.gymory.global.result;
+package com.gymory.global.code.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -2,8 +2,8 @@ package com.gymory.global.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gymory.global.redis.RedisUtils;
-import com.gymory.global.error.ErrorResponse;
-import com.gymory.global.error.exception.BusinessException;
+import com.gymory.global.code.error.ErrorResponse;
+import com.gymory.global.code.error.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

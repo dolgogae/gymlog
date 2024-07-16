@@ -10,8 +10,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import com.gymory.global.result.ResultCode;
-import com.gymory.global.result.ResultResponse;
+import com.gymory.global.code.result.ResultCode;
+import com.gymory.global.code.result.ResultResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,8 +19,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+
 @Slf4j
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/auth")
 public class AuthController {
@@ -36,7 +39,7 @@ public class AuthController {
     })
     @PostMapping("/sign-in")
     public ResponseEntity<ResultResponse> signIn(
-            @RequestBody UserRequestDto request
+            @RequestBody @Valid UserRequestDto request
     ){
         log.info(request.toString());
 
@@ -55,9 +58,9 @@ public class AuthController {
     @Operation(summary = "JWT 로그인 성공 콜백 함수", description = "JWT 로그인 이후 성공 콜백 함수")
     @GetMapping("/login/callback")
     public String loginCallback(
-            @RequestParam String accessToken, @RequestParam String refreshToken
+            @RequestParam @NotBlank String accessToken, @RequestParam @NotBlank String refreshToken
     ){
-        log.info("refreshToken = {}", refreshToken);
+        log.info("accessToken = {} refreshToken={}", accessToken, refreshToken);
         return refreshToken;
     }
 }
