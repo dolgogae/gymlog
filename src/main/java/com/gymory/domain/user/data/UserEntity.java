@@ -1,5 +1,6 @@
 package com.gymory.domain.user.data;
 
+import com.gymory.domain.base.data.BaseEntity;
 import com.gymory.domain.user.UserRole;
 import com.gymory.domain.user.dto.UserDto;
 import lombok.Builder;
@@ -15,56 +16,39 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "USER")
 @EntityListeners(AuditingEntityListener.class)
-public class UserEntity {
+@DiscriminatorColumn(name = "role", discriminatorType = DiscriminatorType.STRING)
+public abstract class UserEntity extends BaseEntity {
 
     @Id
     @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
 
     @Column(name = "USERNAME")
-    private String username;
+    protected String username;
 
     @Column(name = "EMAIL")
-    private String email;
+    protected String email;
 
     @Column(name = "PASSWORD")
-    private String password;
+    protected String password;
 
     @Column(name = "ROLE")
     @Enumerated(value = EnumType.STRING)
-    private UserRole userRole;
+    protected UserRole userRole;
 
     @Column(name = "ACCESS_TOKEN", length = 2000)
-    private String accessToken;
+    protected String accessToken;
 
     @Column(name = "REFRESH_TOKEN", length = 2000)
-    private String refreshToken;
+    protected String refreshToken;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
-
-    @Builder
-    private UserEntity(String username, String email, String password, UserRole userRole) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.userRole = userRole;
-    }
-
-    public static UserEntity create(UserDto userDto){
-        return UserEntity.builder()
-                .username(userDto.getUsername())
-                .email(userDto.getEmail())
-                .password(userDto.getPassword())
-                .userRole(UserRole.valueOf(userDto.getRole()))
-                .build();
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", insertable = false, updatable = false)
+    protected UserRole role;
 
     public UserEntity setTokens(String accessToken, String refreshToken){
         this.accessToken = accessToken;
