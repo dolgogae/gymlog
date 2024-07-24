@@ -1,6 +1,6 @@
-package com.gymory.domain.user.repository;
+package com.gymory.domain.user.base.repository;
 
-import com.gymory.domain.user.data.UserEntity;
+import com.gymory.domain.user.base.data.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

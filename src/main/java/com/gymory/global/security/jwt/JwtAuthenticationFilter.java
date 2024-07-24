@@ -1,13 +1,11 @@
 package com.gymory.global.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gymory.domain.user.dto.UserDto;
-import com.gymory.domain.user.service.UserService;
+import com.gymory.domain.user.base.dto.UserDto;
+import com.gymory.domain.user.base.service.UserService;
 import com.gymory.global.config.AES128Config;
 import com.gymory.global.redis.RedisUtils;
 import com.gymory.global.security.CustomUserDetails;
-import com.gymory.global.security.jwt.JwtTokenProvider;
-import com.gymory.global.security.jwt.TokenDto;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

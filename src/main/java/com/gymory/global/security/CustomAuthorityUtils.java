@@ -1,6 +1,6 @@
 package com.gymory.global.security;
 
-import com.gymory.domain.user.UserRole;
+import com.gymory.domain.user.base.UserRole;
 import com.gymory.global.code.error.ErrorCode;
 import com.gymory.global.code.error.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;

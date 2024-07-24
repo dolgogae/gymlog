@@ -1,8 +1,10 @@
-package com.gymory.domain.user.dto;
+package com.gymory.domain.user.base.dto;
 
 import lombok.*;
-@Data
-@Builder @ToString
+
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {

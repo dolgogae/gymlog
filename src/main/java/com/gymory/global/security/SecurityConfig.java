@@ -1,6 +1,6 @@
 package com.gymory.global.security;
 
-import com.gymory.domain.user.service.UserService;
+import com.gymory.domain.user.base.service.UserService;
 import com.gymory.global.redis.RedisUtils;
 import com.gymory.global.security.handler.CustomAccessDeniedHandler;
 import com.gymory.global.security.handler.LoginFailureHandler;

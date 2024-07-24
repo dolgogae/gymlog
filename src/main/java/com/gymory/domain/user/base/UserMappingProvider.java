@@ -1,9 +1,9 @@
-package com.gymory.domain.user;
+package com.gymory.domain.user.base;
 
-import com.gymory.domain.user.data.UserEntity;
-import com.gymory.domain.user.dto.UserDto;
-import com.gymory.domain.user.dto.UserRequestDto;
-import com.gymory.domain.user.dto.UserResponseDto;
+import com.gymory.domain.user.base.data.UserEntity;
+import com.gymory.domain.user.base.dto.UserDto;
+import com.gymory.domain.user.base.dto.UserRequestDto;
+import com.gymory.domain.user.base.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;

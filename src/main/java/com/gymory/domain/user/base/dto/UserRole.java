@@ -1,4 +1,4 @@
-package com.gymory.domain.user.dto;
+package com.gymory.domain.user.base.dto;
 
 import lombok.Getter;
 

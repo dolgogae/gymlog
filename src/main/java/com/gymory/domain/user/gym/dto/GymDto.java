@@ -1,13 +1,15 @@
-package com.gymory.domain.user.dto;
+package com.gymory.domain.user.gym.dto;
 
+import com.gymory.domain.user.base.dto.UserDto;
 import lombok.*;
 
-@Data
-@Builder
+@Getter
+@Setter
 @ToString
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GymDto extends UserDto{
+public class GymDto extends UserDto {
 
     private String location;
     private String phoneNumber;

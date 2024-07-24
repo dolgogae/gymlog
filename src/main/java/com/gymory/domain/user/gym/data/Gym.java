@@ -1,7 +1,7 @@
-package com.gymory.domain.user.data;
+package com.gymory.domain.user.gym.data;
 
-import com.gymory.domain.user.dto.CustomerDto;
-import com.gymory.domain.user.dto.GymDto;
+import com.gymory.domain.user.base.data.UserEntity;
+import com.gymory.domain.user.gym.dto.GymDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

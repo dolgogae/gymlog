@@ -1,6 +1,6 @@
 package com.gymory.global.security;
 
-import com.gymory.domain.user.data.UserEntity;
+import com.gymory.domain.user.base.data.UserEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;

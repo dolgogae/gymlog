@@ -1,10 +1,10 @@
 package com.gymory.domain.auth;
 
-import com.gymory.domain.user.UserMappingProvider;
-import com.gymory.domain.user.dto.UserDto;
-import com.gymory.domain.user.dto.UserRequestDto;
-import com.gymory.domain.user.dto.UserResponseDto;
-import com.gymory.domain.user.service.UserService;
+import com.gymory.domain.user.base.UserMappingProvider;
+import com.gymory.domain.user.base.dto.UserDto;
+import com.gymory.domain.user.base.dto.UserRequestDto;
+import com.gymory.domain.user.base.dto.UserResponseDto;
+import com.gymory.domain.user.base.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -45,7 +45,8 @@ public class AuthController {
 
         request.setPassword(passwordEncoder.encode(request.getPassword()));
         UserDto userDto = userMappingProvider.requestDtoToDto(request);
-        UserDto user = userService.createUser(userDto);
+        // TODO: divide by role
+        UserDto user = new UserDto();//userService.createUser(userDto);
 
         log.info("create user = {}", user.toString());
 

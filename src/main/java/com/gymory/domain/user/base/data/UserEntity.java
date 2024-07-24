@@ -1,17 +1,12 @@
-package com.gymory.domain.user.data;
+package com.gymory.domain.user.base.data;
 
 import com.gymory.domain.base.data.BaseEntity;
-import com.gymory.domain.user.UserRole;
-import com.gymory.domain.user.dto.UserDto;
-import lombok.Builder;
+import com.gymory.domain.user.base.UserRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -36,7 +31,7 @@ public abstract class UserEntity extends BaseEntity {
     @Column(name = "PASSWORD")
     protected String password;
 
-    @Column(name = "ROLE")
+    @Column(name = "ROLE", insertable = false, updatable = false)
     @Enumerated(value = EnumType.STRING)
     protected UserRole userRole;
 
@@ -45,10 +40,6 @@ public abstract class UserEntity extends BaseEntity {
 
     @Column(name = "REFRESH_TOKEN", length = 2000)
     protected String refreshToken;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role", insertable = false, updatable = false)
-    protected UserRole role;
 
     public UserEntity setTokens(String accessToken, String refreshToken){
         this.accessToken = accessToken;

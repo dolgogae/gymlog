@@ -1,7 +1,7 @@
 package com.gymory.global.security;
 
-import com.gymory.domain.user.data.UserEntity;
-import com.gymory.domain.user.repository.UserJpaRepository;
+import com.gymory.domain.user.base.data.UserEntity;
+import com.gymory.domain.user.base.repository.UserJpaRepository;
 import com.gymory.global.code.error.ErrorCode;
 import com.gymory.global.code.error.exception.BusinessException;
 import lombok.RequiredArgsConstructor;

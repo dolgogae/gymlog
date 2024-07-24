@@ -1,6 +1,7 @@
-package com.gymory.domain.user.data;
+package com.gymory.domain.user.customer.data;
 
-import com.gymory.domain.user.dto.CustomerDto;
+import com.gymory.domain.user.base.data.UserEntity;
+import com.gymory.domain.user.customer.dto.CustomerDto;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,7 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @DiscriminatorValue("CUSTOMER")
-public class Customer extends UserEntity{
+public class Customer extends UserEntity {
 
     // TODO: justify columns
     private String exampleColumns;

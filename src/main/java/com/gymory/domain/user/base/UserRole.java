@@ -1,4 +1,4 @@
-package com.gymory.domain.user;
+package com.gymory.domain.user.base;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
