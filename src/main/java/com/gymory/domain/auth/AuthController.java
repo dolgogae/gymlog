@@ -2,7 +2,7 @@ package com.gymory.domain.auth;
 
 import com.gymory.domain.user.base.UserMappingProvider;
 import com.gymory.domain.user.base.dto.UserDto;
-import com.gymory.domain.user.base.dto.UserRequestDto;
+import com.gymory.domain.user.base.dto.UserCreateDto;
 import com.gymory.domain.user.base.dto.UserResponseDto;
 import com.gymory.domain.user.base.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,18 +35,18 @@ public class AuthController {
     @Operation(summary = "회원가입(sign-in)", description = "회원가입을 위한 API")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "회원가입 성공",
-                    content = @Content(schema = @Schema(implementation = UserRequestDto.class)))
+                    content = @Content(schema = @Schema(implementation = UserCreateDto.class)))
     })
     @PostMapping("/sign-in")
     public ResponseEntity<ResultResponse> signIn(
-            @RequestBody @Valid UserRequestDto request
+            @RequestBody @Valid UserCreateDto request
     ){
         log.info(request.toString());
 
         request.setPassword(passwordEncoder.encode(request.getPassword()));
         UserDto userDto = userMappingProvider.requestDtoToDto(request);
         // TODO: divide by role
-        UserDto user = new UserDto();//userService.createUser(userDto);
+        UserDto user = new UserDto(); //userService.createUser(userDto);
 
         log.info("create user = {}", user.toString());
 

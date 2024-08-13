@@ -2,7 +2,7 @@ package com.gymory.domain.user.base;
 
 import com.gymory.domain.user.base.data.UserEntity;
 import com.gymory.domain.user.base.dto.UserDto;
-import com.gymory.domain.user.base.dto.UserRequestDto;
+import com.gymory.domain.user.base.dto.UserCreateDto;
 import com.gymory.domain.user.base.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ public class UserMappingProvider {
 
     private final ModelMapper mapper;
 
-    public UserDto requestDtoToDto(UserRequestDto requestDto){
+    public UserDto requestDtoToDto(UserCreateDto requestDto){
         return mapper.map(requestDto, UserDto.class);
     }
     public UserResponseDto userDtoToResponseDto(UserDto userDto){

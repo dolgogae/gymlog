@@ -12,8 +12,8 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Schema(description = "사용자 요청 DTO")
-public class UserRequestDto {
+@Schema(description = "사용자 생성 DTO")
+public class UserCreateDto {
 
     @NotBlank
     @Size(min = 2, message = "Username length must be greater than 2.")
@@ -29,4 +29,9 @@ public class UserRequestDto {
     @Size(min = 2, message = "Password length must be greater than 2.")
     @Schema(description = "사용자 비밀번호", example = "비밀번호")
     private String password;
+
+    @NotBlank
+    @Size(min = 2, message = "Password length must be greater than 2.")
+    @Schema(description = "사용자 비밀번호", example = "비밀번호")
+    private UserRole role;
 }

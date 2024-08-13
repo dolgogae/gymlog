@@ -1,7 +1,8 @@
 package com.gymory.domain.user.base.data;
 
 import com.gymory.domain.base.data.BaseEntity;
-import com.gymory.domain.user.base.UserRole;
+import com.gymory.domain.user.base.UserPermission;
+import com.gymory.domain.user.base.dto.UserRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "USER")
 @EntityListeners(AuditingEntityListener.class)
-@DiscriminatorColumn(name = "role", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "userPermission", discriminatorType = DiscriminatorType.STRING)
 public abstract class UserEntity extends BaseEntity {
 
     @Id
@@ -31,9 +32,9 @@ public abstract class UserEntity extends BaseEntity {
     @Column(name = "PASSWORD")
     protected String password;
 
-    @Column(name = "ROLE", insertable = false, updatable = false)
+    @Column(name = "PERMISSION", insertable = false, updatable = false)
     @Enumerated(value = EnumType.STRING)
-    protected UserRole userRole;
+    protected UserPermission userPermission;
 
     @Column(name = "ACCESS_TOKEN", length = 2000)
     protected String accessToken;

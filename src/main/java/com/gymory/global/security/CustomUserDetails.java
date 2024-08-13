@@ -22,7 +22,7 @@ public class CustomUserDetails extends UserEntity implements UserDetails {
         this.id = user.getId();
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.role = user.getUserRole().getKey();
+        this.role = user.getUserPermission().getKey();
     }
 
     private CustomUserDetails(String email, String role) {
