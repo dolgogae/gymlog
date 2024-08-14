@@ -1,5 +1,8 @@
 package com.gymory.global.aop;
 
+import com.gymory.domain.user.base.UserPermission;
+import com.gymory.global.code.error.ErrorCode;
+import com.gymory.global.code.error.exception.BusinessException;
 import com.gymory.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.JoinPoint;
@@ -24,10 +27,13 @@ public class RefreshTokenAspect {
     public void validateToken(JoinPoint joinPoint, ValidateRefreshToken validateRefreshToken) {
         String refreshToken = request.getHeader("Refresh-Token");
         if (refreshToken == null || !validateRefreshToken(refreshToken)) {
-            throw new RuntimeException("Invalid or missing refresh token");
+            throw new BusinessException("Invalid or missing refresh token", ErrorCode.TOKEN_UNSUPPORTED);
         }
 
-        // refreshToken에서 email을 추출하는 로직
+        if(validateRefreshToken.role() != jwtTokenProvider.getUserPermission(refreshToken)){
+            throw new BusinessException("This role have no permission this API", ErrorCode.METHOD_NOT_ALLOWED);
+        }
+
         String email = extractEmailFromToken(refreshToken);
         emailThreadLocal.set(email);
     }
@@ -43,9 +49,7 @@ public class RefreshTokenAspect {
 
     // TODO: 구현 필요, refreshToken에서 email 추출
     private String extractEmailFromToken(String refreshToken) {
-        // refreshToken에서 email을 추출하는 로직을 구현합니다.
-        // 예: JWT에서 클레임으로 email 추출
-        return "extracted-email@example.com"; // 실제 구현 필요
+        return jwtTokenProvider.getUserEmail(refreshToken);
     }
 
     public static String getEmail() {

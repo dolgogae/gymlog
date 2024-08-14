@@ -1,5 +1,6 @@
 package com.gymory.global.security.jwt;
 
+import com.gymory.domain.user.base.UserPermission;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
@@ -111,6 +112,16 @@ public class JwtTokenProvider {
         log.info("# AuthMember.getRoles 권한 체크 = {}", customUserDetails.getAuthorities().toString());
 
         return new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
+    }
+
+    // JWT 토큰에서 email 추출
+    public String getUserEmail(String refreshToken){
+        return parseClaims(refreshToken).getSubject();
+    }
+
+    public UserPermission getUserPermission(String refreshToken){
+        String role = (String)parseClaims(refreshToken).get("role");
+        return UserPermission.fromKey(role);
     }
 
     // 토큰 검증

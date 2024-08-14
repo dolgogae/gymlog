@@ -1,5 +1,7 @@
 package com.gymory.domain.user.base;
 
+import com.gymory.global.code.error.ErrorCode;
+import com.gymory.global.code.error.exception.BusinessException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -15,4 +17,13 @@ public enum UserPermission {
 
     private final String key;
     private final String title;
+
+    public static UserPermission fromKey(String key) {
+        for (UserPermission permission : UserPermission.values()) {
+            if (permission.getKey().equalsIgnoreCase(key)) {
+                return permission;
+            }
+        }
+        throw new BusinessException("No enum constant with key ", ErrorCode.INVALID_TYPE_VALUE);
+    }
 }
