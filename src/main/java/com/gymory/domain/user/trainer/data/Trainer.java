@@ -3,6 +3,7 @@ package com.gymory.domain.user.trainer.data;
 import com.gymory.domain.certification.data.Certificate;
 import com.gymory.domain.fee.data.Fee;
 import com.gymory.domain.user.base.data.UserEntity;
+import com.gymory.domain.user.trainer.dto.TrainerCreateDto;
 import com.gymory.domain.user.trainer.dto.TrainerDto;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -39,7 +40,7 @@ public class Trainer extends UserEntity {
         this.longIntroduction = longIntroduction;
     }
 
-    public static Trainer create(TrainerDto trainerDto){
+    public static Trainer create(TrainerCreateDto trainerDto){
         return Trainer.builder()
                 .username(trainerDto.getUsername())
                 .email(trainerDto.getEmail())

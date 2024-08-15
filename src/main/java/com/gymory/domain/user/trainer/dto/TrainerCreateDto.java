@@ -1,4 +1,4 @@
-package com.gymory.domain.user.base.dto;
+package com.gymory.domain.user.trainer.dto;
 
 import com.gymory.domain.user.base.UserPermission;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,9 +13,8 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Schema(description = "사용자 생성 DTO")
-public class UserCreateDto {
-
+@Schema(description = "트레이너 생성 DTO")
+public class TrainerCreateDto {
     @NotBlank
     @Size(min = 2, message = "Username length must be greater than 2.")
     @Schema(description = "사용자 이름", example = "홍길동")
@@ -35,4 +34,7 @@ public class UserCreateDto {
     @Size(min = 2, message = "Password length must be greater than 2.")
     @Schema(description = "사용자 비밀번호", example = "비밀번호")
     private UserPermission role;
+
+    private String shortIntroduction;
+    private String longIntroduction;
 }

@@ -1,10 +1,14 @@
 package com.gymory.domain.auth;
 
 import com.gymory.domain.user.base.UserMappingProvider;
+import com.gymory.domain.user.base.UserPermission;
 import com.gymory.domain.user.base.dto.UserDto;
 import com.gymory.domain.user.base.dto.UserCreateDto;
 import com.gymory.domain.user.base.dto.UserResponseDto;
 import com.gymory.domain.user.base.service.UserService;
+import com.gymory.domain.user.trainer.dto.TrainerCreateDto;
+import com.gymory.domain.user.trainer.dto.TrainerDto;
+import com.gymory.domain.user.trainer.service.TrainerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -29,6 +33,7 @@ import javax.validation.constraints.NotBlank;
 public class AuthController {
 
     private final UserService userService;
+    private final TrainerService trainerService;
     private final UserMappingProvider userMappingProvider;
     private final PasswordEncoder passwordEncoder;
 
@@ -37,23 +42,25 @@ public class AuthController {
             @ApiResponse(responseCode = "200", description = "회원가입 성공",
                     content = @Content(schema = @Schema(implementation = UserCreateDto.class)))
     })
-    @PostMapping("/sign-in")
+    @PostMapping("/sign-in/trainer")
     public ResponseEntity<ResultResponse> signIn(
-            @RequestBody @Valid UserCreateDto request
+            @RequestBody @Valid TrainerCreateDto trainerCreateDto
     ){
-        log.info(request.toString());
+        log.info(trainerCreateDto.toString());
 
-        request.setPassword(passwordEncoder.encode(request.getPassword()));
-        UserDto userDto = userMappingProvider.requestDtoToDto(request);
-        // TODO: divide by role
-        UserDto user = new UserDto(); //userService.createUser(userDto);
+        trainerCreateDto.setPassword(passwordEncoder.encode(trainerCreateDto.getPassword()));
 
-        log.info("create user = {}", user.toString());
+        if (trainerCreateDto.getRole() == UserPermission.TRAINER) {
+            TrainerDto trainerDto = trainerService.creatTrainer(trainerCreateDto);
+            log.info("create trainer = {}", trainerDto.toString());
+            UserResponseDto userResponseDto = userMappingProvider.trainerDtoToResponseDto(trainerDto);
 
-        UserResponseDto userResponseDto = userMappingProvider.userDtoToResponseDto(user);
-
-        ResultResponse result = ResultResponse.of(ResultCode.REGISTER_SUCCESS, userResponseDto);
-        return new ResponseEntity<>(result, HttpStatus.valueOf(result.getStatus()));
+            ResultResponse result = ResultResponse.of(ResultCode.REGISTER_SUCCESS, userResponseDto);
+            return new ResponseEntity<>(result, HttpStatus.valueOf(result.getStatus()));
+        } else {
+            // TODO: ADMIN, MEMBER, GYM
+            return null;
+        }
     }
 
     @Operation(summary = "JWT 로그인 성공 콜백 함수", description = "JWT 로그인 이후 성공 콜백 함수")
