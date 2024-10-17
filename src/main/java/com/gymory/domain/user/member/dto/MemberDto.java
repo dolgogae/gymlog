@@ -1,12 +1,13 @@
 package com.gymory.domain.user.member.dto;
 
-import com.gymory.domain.user.base.dto.UserDto;
+import com.gymory.domain.user.userbase.dto.UserDto;
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDto extends UserDto {
+public class MemberDto extends UserDto {
     private String exampleColumns;
 }

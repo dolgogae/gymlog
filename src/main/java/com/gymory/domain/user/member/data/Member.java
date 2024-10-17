@@ -1,7 +1,7 @@
 package com.gymory.domain.user.member.data;
 
-import com.gymory.domain.user.base.data.UserEntity;
-import com.gymory.domain.user.member.dto.CustomerDto;
+import com.gymory.domain.user.userbase.data.UserBase;
+import com.gymory.domain.user.member.dto.MemberCreateDto;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @DiscriminatorValue("CUSTOMER")
-public class Member extends UserEntity {
+public class Member extends UserBase {
 
     // TODO: justify columns
     private String exampleColumns;
@@ -24,12 +24,12 @@ public class Member extends UserEntity {
         this.exampleColumns = exampleColumns;
     }
 
-    public static Member create(CustomerDto customerDto){
+    public static Member create(MemberCreateDto memberCreateDto){
         return Member.builder()
-                .username(customerDto.getUsername())
-                .email(customerDto.getEmail())
-                .password(customerDto.getPassword())
-                .exampleColumns(customerDto.getExampleColumns())
+                .username(memberCreateDto.getUsername())
+                .email(memberCreateDto.getEmail())
+                .password(memberCreateDto.getPassword())
+                .exampleColumns(memberCreateDto.getExampleColumn())
                 .build();
     }
 }

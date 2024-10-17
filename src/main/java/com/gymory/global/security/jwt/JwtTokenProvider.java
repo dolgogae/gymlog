@@ -1,6 +1,6 @@
 package com.gymory.global.security.jwt;
 
-import com.gymory.domain.user.base.UserPermission;
+import com.gymory.domain.user.userbase.UserRole;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
@@ -119,9 +119,9 @@ public class JwtTokenProvider {
         return parseClaims(refreshToken).getSubject();
     }
 
-    public UserPermission getUserPermission(String refreshToken){
+    public UserRole getUserPermission(String refreshToken){
         String role = (String)parseClaims(refreshToken).get("role");
-        return UserPermission.fromKey(role);
+        return UserRole.fromKey(role);
     }
 
     // 토큰 검증

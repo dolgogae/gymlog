@@ -1,6 +1,6 @@
-package com.gymory.domain.user.base.dto;
+package com.gymory.domain.user.userbase.dto;
 
-import com.gymory.domain.user.base.UserPermission;
+import com.gymory.domain.user.userbase.UserRole;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -19,20 +19,20 @@ public class UserCreateDto {
     @NotBlank
     @Size(min = 2, message = "Username length must be greater than 2.")
     @Schema(description = "사용자 이름", example = "홍길동")
-    private String username;
+    protected String username;
 
     @NotBlank
     @Email(message = "Not Valid Email")
     @Schema(description = "사용자 email", example = "abc@gmail.com")
-    private String email;
+    protected String email;
 
     @NotBlank
     @Size(min = 2, message = "Password length must be greater than 2.")
     @Schema(description = "사용자 비밀번호", example = "비밀번호")
-    private String password;
+    protected String password;
 
     @NotBlank
     @Size(min = 2, message = "Password length must be greater than 2.")
     @Schema(description = "사용자 비밀번호", example = "비밀번호")
-    private UserPermission role;
+    protected UserRole role;
 }

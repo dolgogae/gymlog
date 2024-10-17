@@ -1,4 +1,4 @@
-package com.gymory.domain.user.base.dto;
+package com.gymory.domain.user.userbase.dto;
 
 import lombok.*;
 

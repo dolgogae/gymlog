@@ -2,9 +2,8 @@ package com.gymory.domain.user.trainer.data;
 
 import com.gymory.domain.certification.data.Certificate;
 import com.gymory.domain.fee.data.Fee;
-import com.gymory.domain.user.base.data.UserEntity;
+import com.gymory.domain.user.userbase.data.UserBase;
 import com.gymory.domain.user.trainer.dto.TrainerCreateDto;
-import com.gymory.domain.user.trainer.dto.TrainerDto;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +18,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @DiscriminatorValue("TRAINER")
-public class Trainer extends UserEntity {
+public class Trainer extends UserBase {
 
     @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Certificate> certificates = new ArrayList<>();

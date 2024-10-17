@@ -1,6 +1,6 @@
 package com.gymory.global.security;
 
-import com.gymory.domain.user.base.data.UserEntity;
+import com.gymory.domain.user.userbase.data.UserBase;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -12,17 +12,17 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @ToString
-public class CustomUserDetails extends UserEntity implements UserDetails {
+public class CustomUserDetails extends UserBase implements UserDetails {
     private Long id;
     private String email;
     private String role;
     private String password;
 
-    private CustomUserDetails(UserEntity user) {
+    private CustomUserDetails(UserBase user) {
         this.id = user.getId();
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.role = user.getUserPermission().getKey();
+        this.role = user.getRole().getKey();
     }
 
     private CustomUserDetails(String email, String role) {
@@ -36,7 +36,7 @@ public class CustomUserDetails extends UserEntity implements UserDetails {
         this.role = role;
     }
 
-    public static CustomUserDetails of(UserEntity user) {
+    public static CustomUserDetails of(UserBase user) {
         return new CustomUserDetails(user);
     }
 

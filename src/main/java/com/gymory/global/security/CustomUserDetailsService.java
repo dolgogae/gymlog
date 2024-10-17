@@ -1,7 +1,7 @@
 package com.gymory.global.security;
 
-import com.gymory.domain.user.base.data.UserEntity;
-import com.gymory.domain.user.base.repository.UserJpaRepository;
+import com.gymory.domain.user.userbase.data.UserBase;
+import com.gymory.domain.user.userbase.repository.UserJpaRepository;
 import com.gymory.global.code.error.ErrorCode;
 import com.gymory.global.code.error.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return userDetails;
     }
 
-    private UserDetails createUserDetails(UserEntity user) {
+    private UserDetails createUserDetails(UserBase user) {
         return CustomUserDetails.of(user);
     }
 }

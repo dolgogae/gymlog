@@ -1,4 +1,4 @@
-package com.gymory.domain.user.base;
+package com.gymory.domain.user.userbase;
 
 import com.gymory.global.code.error.ErrorCode;
 import com.gymory.global.code.error.exception.BusinessException;
@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum UserPermission {
+public enum UserRole {
 
     ANONYMOUS("ROLE_ANONYMOUS", "미가입 사용자"),
     MEMBER("ROLE_MEMBER", "일반 사용자"),
@@ -18,8 +18,8 @@ public enum UserPermission {
     private final String key;
     private final String title;
 
-    public static UserPermission fromKey(String key) {
-        for (UserPermission permission : UserPermission.values()) {
+    public static UserRole fromKey(String key) {
+        for (UserRole permission : UserRole.values()) {
             if (permission.getKey().equalsIgnoreCase(key)) {
                 return permission;
             }

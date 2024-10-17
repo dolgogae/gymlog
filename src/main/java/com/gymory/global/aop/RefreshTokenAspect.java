@@ -1,6 +1,5 @@
 package com.gymory.global.aop;
 
-import com.gymory.domain.user.base.UserPermission;
 import com.gymory.global.code.error.ErrorCode;
 import com.gymory.global.code.error.exception.BusinessException;
 import com.gymory.global.security.jwt.JwtTokenProvider;

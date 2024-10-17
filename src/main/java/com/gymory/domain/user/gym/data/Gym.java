@@ -1,6 +1,7 @@
 package com.gymory.domain.user.gym.data;
 
-import com.gymory.domain.user.base.data.UserEntity;
+import com.gymory.domain.user.gym.dto.GymCreateDto;
+import com.gymory.domain.user.userbase.data.UserBase;
 import com.gymory.domain.user.gym.dto.GymDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @DiscriminatorValue("GYM")
-public class Gym extends UserEntity {
+public class Gym extends UserBase {
 
     // TODO: justify columns
     private String location;
@@ -37,7 +38,7 @@ public class Gym extends UserEntity {
         this.usageInfo = usageInfo;
     }
 
-    public static Gym create(GymDto gymDto){
+    public static Gym create(GymCreateDto gymDto){
         return Gym.builder()
                 .username(gymDto.getUsername())
                 .email(gymDto.getEmail())

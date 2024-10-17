@@ -1,6 +1,6 @@
 package com.gymory.domain.user.gym.dto;
 
-import com.gymory.domain.user.base.dto.UserDto;
+import com.gymory.domain.user.userbase.dto.UserDto;
 import lombok.*;
 
 @Getter
