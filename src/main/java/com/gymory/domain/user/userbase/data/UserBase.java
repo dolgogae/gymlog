@@ -2,9 +2,7 @@ package com.gymory.domain.user.userbase.data;
 
 import com.gymory.domain.base.data.BaseEntity;
 import com.gymory.domain.user.userbase.UserRole;
-import com.gymory.domain.user.userbase.dto.UserCreateDto;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -13,7 +11,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

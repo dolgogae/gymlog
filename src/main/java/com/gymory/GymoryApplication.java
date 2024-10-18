@@ -17,14 +17,4 @@ public class GymoryApplication {
     public static void main(String[] args) {
         SpringApplication.run(GymoryApplication.class, args);
     }
-
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }

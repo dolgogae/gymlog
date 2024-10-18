@@ -15,25 +15,25 @@ import java.util.List;
 public class CustomUserDetails extends UserBase implements UserDetails {
     private Long id;
     private String email;
-    private String role;
+    private String userRole;
     private String password;
 
     private CustomUserDetails(UserBase user) {
         this.id = user.getId();
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.role = user.getRole().getKey();
+        this.userRole = user.getRole().getKey();
     }
 
-    private CustomUserDetails(String email, String role) {
+    private CustomUserDetails(String email, String userRole) {
         this.email = email;
-        this.role = role;
+        this.userRole = userRole;
     }
 
-    private CustomUserDetails(String email, String password, String role) {
+    private CustomUserDetails(String email, String password, String userRole) {
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.userRole = userRole;
     }
 
     public static CustomUserDetails of(UserBase user) {
@@ -50,7 +50,7 @@ public class CustomUserDetails extends UserBase implements UserDetails {
 
     @Override
     public List<GrantedAuthority> getAuthorities() {
-        return CustomAuthorityUtils.createAuthorities(role);
+        return CustomAuthorityUtils.createAuthorities(userRole);
     }
 
     @Override

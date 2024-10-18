@@ -8,7 +8,6 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @ToString
 @AllArgsConstructor
-@SuperBuilder
 @NoArgsConstructor
 public class TrainerDto extends UserDto {
 

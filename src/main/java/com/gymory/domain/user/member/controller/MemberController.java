@@ -17,12 +17,5 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/member")
 public class MemberController {
-    private final MemberService memberService;
 
-    @PatchMapping("/sign-in")
-    public ResponseEntity<ResultResponse> signInMember(
-            @RequestBody @Valid MemberCreateDto memberCreateDto
-    ){
-
-    }
 }

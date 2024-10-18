@@ -6,13 +6,13 @@ import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Schema(description = "사용자 생성 DTO")
 public class UserCreateDto {
 
@@ -28,11 +28,10 @@ public class UserCreateDto {
 
     @NotBlank
     @Size(min = 2, message = "Password length must be greater than 2.")
-    @Schema(description = "사용자 비밀번호", example = "비밀번호")
+    @Schema(description = "사용자 비밀번호", example = "1234!@#")
     protected String password;
 
-    @NotBlank
-    @Size(min = 2, message = "Password length must be greater than 2.")
-    @Schema(description = "사용자 비밀번호", example = "비밀번호")
+    @NotNull
+    @Schema(description = "사용자 권한", example = "MEMBER")
     protected UserRole role;
 }

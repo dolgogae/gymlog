@@ -69,7 +69,7 @@ public class JwtTokenProvider {
         Date accessTokenExpiresIn = getTokenExpiration(accessTokenExpirationMillis);
         Date refreshTokenExpiresIn = getTokenExpiration(refreshTokenExpirationMillis);
         Map<String, Object> claims = new HashMap<>();
-        claims.put("role", customUserDetails.getRole());
+        claims.put("role", customUserDetails.getUserRole());
 
         String accessToken = Jwts.builder()
                 .setClaims(claims)
