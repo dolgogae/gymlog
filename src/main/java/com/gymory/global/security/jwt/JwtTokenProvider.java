@@ -69,7 +69,7 @@ public class JwtTokenProvider {
         Date accessTokenExpiresIn = getTokenExpiration(accessTokenExpirationMillis);
         Date refreshTokenExpiresIn = getTokenExpiration(refreshTokenExpirationMillis);
         Map<String, Object> claims = new HashMap<>();
-        claims.put("role", customUserDetails.getUserRole());
+        claims.put("userRole", customUserDetails.getUserRole());
 
         String accessToken = Jwts.builder()
                 .setClaims(claims)
@@ -83,6 +83,7 @@ public class JwtTokenProvider {
                 .setSubject(customUserDetails.getEmail())
                 .setIssuedAt(Calendar.getInstance().getTime())
                 .setExpiration(refreshTokenExpiresIn)
+                .claim("userRole", customUserDetails.getUserRole())
                 .signWith(key)
                 .compact();
 
@@ -99,11 +100,11 @@ public class JwtTokenProvider {
     public Authentication getAuthentication(String accessToken) {
         Claims claims = parseClaims(accessToken);
 
-        if (claims.get("role") == null) {
+        if (claims.get("userRole") == null) {
             throw new BusinessException(ErrorCode.NO_ACCESS_TOKEN);
         }
 
-        String authority = claims.get("role").toString();
+        String authority = claims.get("userRole").toString();
 
         CustomUserDetails customUserDetails = CustomUserDetails.of(
                 claims.getSubject(),
@@ -120,7 +121,8 @@ public class JwtTokenProvider {
     }
 
     public UserRole getUserPermission(String refreshToken){
-        String role = (String)parseClaims(refreshToken).get("role");
+        Claims claims = parseClaims(refreshToken);
+        String role = (String)parseClaims(refreshToken).get("userRole");
         return UserRole.fromKey(role);
     }
 

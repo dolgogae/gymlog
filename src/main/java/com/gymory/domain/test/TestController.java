@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    @ValidateRefreshToken(role = UserRole.ADMIN)
+    @ValidateRefreshToken(role = UserRole.MEMBER)
     @GetMapping("/hello")
     public String hello() {
         String email = RefreshTokenAspect.getEmail();

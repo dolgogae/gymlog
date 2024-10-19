@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "USER")
 @EntityListeners(AuditingEntityListener.class)
-@DiscriminatorColumn(name = "userPermission", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "role", discriminatorType = DiscriminatorType.STRING)
 public abstract class UserBase extends BaseEntity {
 
     @Id
