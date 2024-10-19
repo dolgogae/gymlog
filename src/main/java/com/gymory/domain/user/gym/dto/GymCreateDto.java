@@ -3,24 +3,26 @@ package com.gymory.domain.user.gym.dto;
 import com.gymory.domain.user.userbase.dto.UserCreateDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Schema(description = "체육관 생성 DTO")
 public class GymCreateDto extends UserCreateDto {
     // TODO: need to add gym's column
     private String location;
     private String phoneNumber;
     private String etcInfo;    // nearby any stations
-    private GymDto.GymUsageInfoDto usageInfoDto;
+    private GymUsageInfoDto usageInfoDto;
 
 
     @Getter
     @Setter
+    @Builder
     @NoArgsConstructor
     @AllArgsConstructor
     public static class GymUsageInfoDto{

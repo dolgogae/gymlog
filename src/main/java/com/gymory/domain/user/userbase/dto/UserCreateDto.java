@@ -3,6 +3,7 @@ package com.gymory.domain.user.userbase.dto;
 import com.gymory.domain.user.userbase.UserRole;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -13,9 +14,9 @@ import javax.validation.constraints.Size;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Schema(description = "사용자 생성 DTO")
 public class UserCreateDto {
-
     @NotBlank
     @Size(min = 2, message = "Username length must be greater than 2.")
     @Schema(description = "사용자 이름", example = "홍길동")

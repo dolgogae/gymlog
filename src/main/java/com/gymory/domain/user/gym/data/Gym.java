@@ -1,8 +1,8 @@
 package com.gymory.domain.user.gym.data;
 
 import com.gymory.domain.user.gym.dto.GymCreateDto;
+import com.gymory.domain.user.userbase.UserRole;
 import com.gymory.domain.user.userbase.data.UserBase;
-import com.gymory.domain.user.gym.dto.GymDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,11 +27,12 @@ public class Gym extends UserBase {
 
 
     @Builder
-    private Gym(String username, String email, String password, String location,
+    private Gym(String username, String email, String password, String location, UserRole role,
                 String phoneNumber, String etcInfo, UsageInfo usageInfo) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.role = role;
         this.location = location;
         this.phoneNumber = phoneNumber;
         this.etcInfo = etcInfo;
@@ -43,6 +44,7 @@ public class Gym extends UserBase {
                 .username(gymDto.getUsername())
                 .email(gymDto.getEmail())
                 .password(gymDto.getPassword())
+                .role(gymDto.getRole())
                 .location(gymDto.getLocation())
                 .phoneNumber(gymDto.getPhoneNumber())
                 .etcInfo(gymDto.getEtcInfo())
@@ -65,7 +67,7 @@ public class Gym extends UserBase {
             this.locker = locker;
         }
 
-        public static UsageInfo create(GymDto.GymUsageInfoDto usageInfoDto){
+        public static UsageInfo create(GymCreateDto.GymUsageInfoDto usageInfoDto){
             return UsageInfo.builder()
                     .locker(usageInfoDto.getLocker())
                     .parking(usageInfoDto.getParking())

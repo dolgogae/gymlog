@@ -2,11 +2,12 @@ package com.gymory.domain.user.gym.dto;
 
 import com.gymory.domain.user.userbase.dto.UserDto;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @ToString
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class GymDto extends UserDto {
