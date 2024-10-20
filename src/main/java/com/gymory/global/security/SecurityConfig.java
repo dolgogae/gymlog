@@ -8,7 +8,6 @@ import com.gymory.global.security.handler.LoginSuccessHandler;
 import com.gymory.global.security.jwt.JwtTokenProvider;
 import com.gymory.global.security.jwt.JwtVerificationFilter;
 import com.gymory.global.security.jwt.JwtAuthenticationFilter;
-import com.gymory.global.config.AES128Config;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -34,7 +33,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfig {
     private final JwtTokenProvider jwtTokenProvider;
     private final UserService userService;
-    private final AES128Config aes128Config;
+    private final AES128Service aes128Service;
     private final RedisUtils redisUtils;
 
     @Bean
@@ -91,7 +90,7 @@ public class SecurityConfig {
             log.info("SecurityConfiguration.CustomFilterConfigurer.configure excute");
             AuthenticationManager authenticationManager = builder.getSharedObject(AuthenticationManager.class);
             JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager,
-                    jwtTokenProvider, aes128Config, userService, redisUtils);
+                    jwtTokenProvider, aes128Service, userService, redisUtils);
             JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenProvider, redisUtils);
 
             jwtAuthenticationFilter.setFilterProcessesUrl("/auth/login");

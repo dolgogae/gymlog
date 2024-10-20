@@ -3,7 +3,7 @@ package com.gymory.global.security.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gymory.domain.user.userbase.dto.UserDto;
 import com.gymory.domain.user.userbase.service.UserService;
-import com.gymory.global.config.AES128Config;
+import com.gymory.global.security.AES128Service;
 import com.gymory.global.redis.RedisUtils;
 import com.gymory.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
-    private final AES128Config aes128Config;
+    private final AES128Service aes128Service;
     private final UserService userService;
     private final RedisUtils redisUtils;
 
@@ -53,7 +53,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         TokenDto tokenDto = jwtTokenProvider.generateTokenDto(customUserDetails);
         String accessToken = tokenDto.getAccessToken();
         String refreshToken = tokenDto.getRefreshToken();
-        String encryptedRefreshToken = aes128Config.encryptAes(refreshToken);
+        String encryptedRefreshToken = aes128Service.encryptAes(refreshToken);
 
         jwtTokenProvider.accessTokenSetHeader(accessToken, response);
         jwtTokenProvider.refresshTokenSetHeader(encryptedRefreshToken, response);

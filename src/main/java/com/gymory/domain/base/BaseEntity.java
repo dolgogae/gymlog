@@ -1,4 +1,4 @@
-package com.gymory.domain.base.data;
+package com.gymory.domain.base;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

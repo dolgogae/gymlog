@@ -1,6 +1,6 @@
 package com.gymory.domain.user.trainer.data;
 
-import com.gymory.domain.certification.data.Certificate;
+import com.gymory.domain.certification.data.Certification;
 import com.gymory.domain.fee.data.Fee;
 import com.gymory.domain.user.userbase.UserRole;
 import com.gymory.domain.user.userbase.data.UserBase;
@@ -9,10 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +20,12 @@ import java.util.List;
 public class Trainer extends UserBase {
 
     @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Certificate> certificates = new ArrayList<>();
+    private List<Certification> certifications = new ArrayList<>();
 
     private String shortIntroduction;
     private String longIntroduction;
 
-    @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Fee> fees = new ArrayList<>();
 
 

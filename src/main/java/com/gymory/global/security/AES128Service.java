@@ -1,4 +1,4 @@
-package com.gymory.global.config;
+package com.gymory.global.security;
 
 import com.gymory.global.code.error.ErrorCode;
 import com.gymory.global.code.error.exception.BusinessException;
@@ -17,7 +17,7 @@ import java.security.SecureRandom;
 import java.util.Base64;
 
 @Component
-public class AES128Config {
+public class AES128Service {
     private static final Charset ENCODING_TYPE = StandardCharsets.UTF_8;
     private static final String INSTANCE_TYPE = "AES/CBC/PKCS5Padding";
 

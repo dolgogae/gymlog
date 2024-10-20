@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -16,6 +17,7 @@ public class GymService {
     private final ModelMapper modelMapper;
     private final GymRepository gymRepository;
 
+    @Transactional
     public GymDto createGym(GymCreateDto gymCreateDto){
         Gym gym = Gym.create(gymCreateDto);
         Gym savedGym = gymRepository.save(gym);

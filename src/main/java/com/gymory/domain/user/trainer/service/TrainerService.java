@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -16,6 +17,7 @@ public class TrainerService {
     private final TrainerRepository trainerRepository;
     private final ModelMapper modelMapper;
 
+    @Transactional
     public TrainerDto creatTrainer(TrainerCreateDto trainerCreateDto){
         Trainer trainer = Trainer.create(trainerCreateDto);
         Trainer savedTrainer = trainerRepository.save(trainer);

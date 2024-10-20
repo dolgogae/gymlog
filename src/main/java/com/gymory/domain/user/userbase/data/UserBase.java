@@ -1,6 +1,6 @@
 package com.gymory.domain.user.userbase.data;
 
-import com.gymory.domain.base.data.BaseEntity;
+import com.gymory.domain.base.BaseEntity;
 import com.gymory.domain.user.userbase.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
